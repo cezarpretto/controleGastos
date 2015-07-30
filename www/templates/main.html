@@ -1,0 +1,21 @@
+<ion-view view-title="Controle de Gastos Beta">
+  <ion-content>
+    <!--<h1>Controle de Gastos Beta</h1>-->
+    <div class="list">
+      <a ng-click="selecionaTitulo(c)" class="item item-avatar item-icon-right" ng-repeat="c in listaContas">
+        <img src="img/d.png" ng-if="c.natureza === 'D'">
+        <img src="img/c.png" ng-if="c.natureza === 'C'">
+        <h3>{{c.obs}}</h3>
+        <h5>Vencimento: {{c.dtVencimento | date: 'dd/MM/yyyy'}}</h5>
+        <h5>Valor: {{c.valor | currency}}</h5>
+        <h5 ng-class="c.idUsuario > 0 ? 'assertive' : 'balanced'">{{c.idUsuario > 0 ? 'VENCIDO' : 'EM DIA'}}</h5>
+        <!--<span class="badge badge-assertive" ng-if="c.idUsuario > 0">
+          *
+        </span>
+        <span class="badge badge-balanced" ng-if="c.idUsuario <= 0">
+          *
+        </span>-->
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

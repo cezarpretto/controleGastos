@@ -1,0 +1,14 @@
+<ion-modal-view>
+  <ion-content has-header="true">
+    <form name="frmCadastroUsuario" ng-submit="insertUsuario()">
+      <div class="list">
+          <ion-md-input  placeholder="Nome" highlight-color="balanced" type="text" ng-model="usuario.nome" required="required"></ion-md-input>
+          <ion-md-input placeholder="Email" highlight-color="balanced" type="email" ng-model="usuario.username" required="required"></ion-md-input>
+          <ion-md-input placeholder="Senha" highlight-color="balanced" type="password" ng-model="usuario.senha" required="required"></ion-md-input>
+      </div>
+      <div class="padding">
+          <button class="button button-full button-balanced ink" type="submit" ng-disabled="frmLogin.$invalid">CADASTRAR</button>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

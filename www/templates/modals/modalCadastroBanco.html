@@ -1,0 +1,16 @@
+<div class="modal">
+  <header class="bar bar-header bar-assertive-900">
+    <h1 class="title">Cadastrar Banco</h1>
+    <div class="button button-clear" ng-click="modalNovoBanco.hide()"><span class="icon ion-close"></span></div>
+  </header>
+  <ion-content has-header="true" style="padding-top: 38px;" overflow-scroll='true'>
+    <form name="frmCadastroBanco" ng-submit="insertBanco()">
+      <div class="list">
+          <ion-md-input  placeholder="Banco" highlight-color="balanced" type="text" ng-model="novoBanco.banco" required="required"></ion-md-input>
+      </div>
+      <div class="padding">
+          <button class="button button-full button-balanced ink" type="submit" ng-disabled="frmCadastroBanco.$invalid">CADASTRAR</button>
+      </div>
+    </form>
+  </ion-content>
+</div>

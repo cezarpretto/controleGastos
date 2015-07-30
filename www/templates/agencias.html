@@ -1,0 +1,109 @@
+<ion-view view-title="Agências">
+    <ion-content ng-class="{expanded:isExpanded}">
+        <div class="content has-headers" style="padding-bottom: 50px;">
+          <form name="forms.frmCadastroAgencia" ng-submit="insertAgencia()">
+            <div class="row">
+              <div class="col col-100">
+                <div class="list">
+                  <label class="item item-input item-select">
+                    <div class="input-label">
+                      Banco
+                    </div>
+                    <select ng-model="novaAgencia.idBanco" required="required">
+                      <option value="undefined">Selecione</option>
+                      <option ng-repeat="b in listaBancos" value="{{b.id}}">{{b.banco}}</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-50">
+                <div class="list">
+                  <label class="item item-input item-stacked-label">
+                    <span class="input-label">Agência</span>
+                    <input type="text" placeholder="Agência" ng-model="novaAgencia.agencia" required="required">
+                  </label>
+                </div>
+              </div>
+              <div class="col col-50">
+                <div class="list">
+                  <label class="item item-input item-stacked-label">
+                    <span class="input-label">CEP</span>
+                    <input type="text" placeholder="CEP" ng-model="novaAgencia.cep" ng-keyup="podeVerificarCep()" ui-br-cep-mask required="required">
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-50">
+                <div class="list">
+                  <label class="item item-input item-stacked-label">
+                    <span class="input-label">Endereço</span>
+                    <input id="txtLogradouro" type="text" placeholder="Endereço" ng-model="novaAgencia.logradouro" required="required" ng-disabled="camposBloqueados">
+                  </label>
+                </div>
+              </div>
+              <div class="col col-50">
+                <div class="list">
+                  <label class="item item-input item-stacked-label">
+                    <span class="input-label">Número</span>
+                    <input id="txtNumero" type="text" placeholder="Número" ng-model="novaAgencia.numero" required="required" ng-disabled="camposBloqueados">
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-50">
+                <div class="list">
+                  <label class="item item-input item-stacked-label">
+                    <span class="input-label">Complemento</span>
+                    <input type="text" placeholder="Complemento" ng-model="novaAgencia.complemento" ng-disabled="camposBloqueados">
+                  </label>
+                </div>
+              </div>
+              <div class="col col-50">
+                <div class="list">
+                  <label class="item item-input item-stacked-label">
+                    <span class="input-label">Cidade</span>
+                    <input type="text" placeholder="Cidade" ng-model="novaAgencia.cidade" required="required" ng-disabled="camposBloqueados">
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-50">
+                <div class="list">
+                  <label class="item item-input item-stacked-label">
+                    <span class="input-label">Estado</span>
+                    <input type="text" placeholder="Estado" ng-model="novaAgencia.estado" required="required" ng-disabled="camposBloqueados">
+                  </label>
+                </div>
+              </div>
+              <div class="col col-50">
+                <div class="list">
+                  <label class="item item-input item-stacked-label">
+                    <span class="input-label">Telefone</span>
+                    <input type="text" placeholder="Telefone" ng-model="novaAgencia.fone" ui-br-phone-number required="required" ng-disabled="camposBloqueados">
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="padding">
+                <button class="button button-full button-balanced ink" type="submit" ng-disabled="forms.frmCadastroAgencia.$invalid">CADASTRAR</button>
+            </div>
+          </form>
+        </div>
+        {{frmCadastroAgencia | json}}
+    </ion-content>
+    <!--<div class="bar bar-footer">
+      <div class="title">
+
+      </div>
+      <div class="buttons buttons-right">
+        <button class="button button-balanced-900 button-fab" ng-click="openModalNovoBanco()">
+          <i class="icon ion-plus-round light"></i>
+        </button>
+      </div>
+    </div>-->
+</ion-view>

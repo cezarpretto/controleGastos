@@ -1,0 +1,27 @@
+<ion-view view-title="Bancos">
+    <ion-content ng-class="{expanded:isExpanded}">
+        <div class="content has-headers" style="padding-bottom: 50px;">
+            <div class="list" ng-repeat="b in listaBancos">
+                <a href="#/app/profile" class="item item-avatar">
+                    <img src="img/banco.png">
+                    <h2>{{b.banco}}</h2>
+                    <p><br /></p>
+                </a>
+            </div>
+        </div>
+        <ion-infinite-scroll
+          on-infinite="loadMoreBancos()"
+          distance="1%">
+        </ion-infinite-scroll>
+    </ion-content>
+    <div class="bar bar-footer">
+      <div class="title">
+
+      </div>
+      <div class="buttons buttons-right">
+        <button class="button button-balanced-900 button-fab" ng-click="openModalNovoBanco()">
+          <i class="icon ion-plus-round light"></i>
+        </button>
+      </div>
+    </div>
+</ion-view>
