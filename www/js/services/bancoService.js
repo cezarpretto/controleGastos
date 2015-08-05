@@ -17,4 +17,12 @@ angular.module('starter')
   this.insertAgencia = function(agencia){
     return $http.post(ip + 'bancos/agencias/insert', agencia);
   };
+
+  this.getAgencias = function(idBanco, limit, offset){
+    return $http.get(ip + 'bancos/agencias/getAgencias/' + idBanco + '/' + limit + '/' + offset);
+  };
+
+  this.getContas = function(idAgencia, limit, offset){
+    return $http.get(ip + 'bancos/contas/getContas/' + idAgencia + '/' + limit + '/' + offset);
+  };
 }]);

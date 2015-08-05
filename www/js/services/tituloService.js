@@ -11,4 +11,8 @@ angular.module('starter')
   this.getContasDoMes = function(idUsuario, limit, offset){
     return $http.get(ip + 'contas/getContasDoMes/' + idUsuario + '/' + limit + '/' + offset);
   };
+
+  this.getTipos = function(){
+    return $http.get(ip + 'titulos/getTipos');
+  };
 }]);

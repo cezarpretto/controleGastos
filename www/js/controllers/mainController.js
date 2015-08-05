@@ -15,17 +15,18 @@ angular.module('starter')
     var dt = new Date(data);
     var timeDiff = Math.abs(dtAtual.getTime() - dt.getTime());
     var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-    retorno = diffDays;
+    var retorno = diffDays;
+    if(dtAtual < dt){
+      retorno = -1;
+    }
     return retorno;
   }
 
-  console.log(dateDiff('2015-07-1'));
   var getContasDoMes = function(){
     if(usuarioLogado != null){
       msg.loading('show');
       tituloService.getContasDoMes(usuarioLogado.id, limit, offset).success(function(retorno){
         msg.loading('hide');
-        xLog(retorno);
         angular.forEach(retorno, function(item){
           item.idUsuario = dateDiff(item.dtVencimento) -1;
         });

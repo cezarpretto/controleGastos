@@ -35,4 +35,20 @@ angular.module('starter')
       console.error('The toast attribute can\'t be null! You Motherfucker!');
     }
   };
+
+  this.confirm = function(msg){
+    var confirmPopup = $ionicPopup.confirm({
+     title: 'Controle de Gastos Beta',
+     template: msg,
+     okText: 'SIM',
+     cancelText: 'NÃO'
+   });
+   confirmPopup.then(function(res) {
+     if(res) {
+       return true;
+     } else {
+       return false;
+     }
+   });
+  };
 }]);

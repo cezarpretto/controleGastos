@@ -1,10 +1,13 @@
 angular.module('starter')
 
 .service('BancoModel', function(){
+  var self = this;
+
   this.banco = function(){
     this.id = undefined;
     this.banco = undefined;
     this.idUsuario = undefined;
+    this.agencias = undefined;
   };
 
   this.agencia = function(){
@@ -18,5 +21,6 @@ angular.module('starter')
     this.cidade = undefined;
     this.estado = undefined;
     this.complemento = undefined;
+    this.contas = undefined;
   };
 });

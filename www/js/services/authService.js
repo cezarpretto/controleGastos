@@ -2,7 +2,7 @@ angular.module('starter')
 
 .service('AuthService', ['$http', '$state', '$ionicHistory', 'MsgService', function($http, $state, $ionicHistory, msg){
   var self = this;
-  this.ip = 'http://172.16.10.22/CoreOS/';
+  this.ip = 'http://192.168.0.21/CoreOS/';
   this.usuarioLogado = JSON.parse(window.localStorage.getItem('usuarioLogado'));
   this.tituloSelecionado = JSON.parse(window.localStorage.getItem('tituloSelecionado'));
 
