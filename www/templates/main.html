@@ -17,5 +17,19 @@
         </span>-->
       </a>
     </div>
+    <ion-infinite-scroll
+      on-infinite="loadMoreContas()"
+      distance="1%">
+    </ion-infinite-scroll>
   </ion-content>
+  <div class="bar bar-footer">
+    <div class="title">
+
+    </div>
+    <div class="buttons buttons-right">
+      <button class="button button-balanced-900 button-fab" ng-click="criarTitulo()">
+        <i class="icon ion-plus-round light"></i>
+      </button>
+    </div>
+  </div>
 </ion-view>

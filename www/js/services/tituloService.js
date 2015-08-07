@@ -15,4 +15,8 @@ angular.module('starter')
   this.getTipos = function(){
     return $http.get(ip + 'titulos/getTipos');
   };
+
+  this.baixarTitulo = function(idTitulo){
+    return $http.get(ip + 'titulos/baixar/' + idTitulo);
+  };
 }]);

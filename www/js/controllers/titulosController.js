@@ -77,7 +77,7 @@ angular.module('starter')
       tt.idUsuario = usuarioLogado.id;
       tt.obs = $scope.novoTitulo.obs;
       tt.natureza = $scope.novoTitulo.natureza;
-      tt.valor = totalDividido;
+      tt.valor = $scope.novoTitulo.valor;
       tt.banco = $scope.novoTitulo.banco;
       tt.tipo = $scope.novoTitulo.tipo;
       if(angular.isUndefined($scope.novoTitulo.numero)){
@@ -111,7 +111,21 @@ angular.module('starter')
 
   $scope.salvarTitulo = function(){
     console.log('passou aqui');
-    var total = 0;
+    msg.loading('show');
+    tituloService.insert($scope.listaTitulosInserir).success(function(retorno){
+      msg.loading('hide');
+      console.log(retorno);
+      $scope.closeModalReajustaPreco();
+      $scope.closeModalNovoTitulo();
+      $scope.listaTitulosInserir = [];
+      $scope.novoTitulo = new titulo.titulo();
+    }).error(function(err){
+      msg.loading('hide');
+      console.error(err.message);
+      msg.alert(err);
+    });
+    //todo arrumar aqui
+    /*var total = 0;
     angular.forEach($scope.listaTitulosInserir, function(retorno){
       total += retorno.valor;
     });
@@ -131,7 +145,7 @@ angular.module('starter')
         console.error(err.message);
         msg.alert(err);
       });
-    }
+    }*/
   };
 
   $ionicModal.fromTemplateUrl('templates/modals/modalNovoTitulo.html', {
@@ -139,7 +153,7 @@ angular.module('starter')
     animation: 'slide-in-up'
   }).then(function(modal) {
     $scope.modalNovoTitulo = modal;
-    modal.show();
+    //modal.show();
   });
 
   $scope.openModalNovoTitulo = function() {

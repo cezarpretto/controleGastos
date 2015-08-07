@@ -1,17 +1,151 @@
 <ion-view view-title="Títulos">
     <ion-content ng-class="{expanded:isExpanded}">
         <div class="content has-headers">
-            <div class="list">
-                <a href="#/app/profile" class="item item-avatar item-icon-right">
-                    <img src="img/avatar.png">
-                    <h2>Jon Snow</h2>
-                    <p>Da illest illegitimate</p>
-                    <i class="icon ion-chatbubble muted"></i>
-                </a>
+          <form name="forms.frmTitulo" ng-submit="gerarTitulo()">
+            <div class="row">
+              <div class="col col-100">
+                <div class="list">
+                  <label class="item item-input item-select">
+                    <div class="input-label">
+                      Tipo
+                    </div>
+                    <select ng-options="t.descricao for t in listaTipos" ng-model="novoTitulo.tipo" required="required">
+
+                    </select>
+                  </label>
+                </div>
+              </div>
             </div>
+            <div class="row">
+              <div class="col col-100">
+                <div class="list">
+                  <label class="item item-input item-stacked-label">
+                    <span class="input-label">Descrição</span>
+                    <input type="text" placeholder="Descrição" ng-model="novoTitulo.obs" required="required">
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-100">
+                <div class="list">
+                  <label class="item item-input item-stacked-label">
+                    <span class="input-label">Número</span>
+                    <input type="text" placeholder="Descrição" ng-model="novoTitulo.numero">
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-100">
+                <div class="list">
+                  <label class="item item-input item-stacked-label">
+                    <span class="input-label">Vencimento</span>
+                    <input type="date" placeholder="Vencimento" ng-model="novoTitulo.dtVencimento" required="required">
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-100">
+                <div class="list">
+                  <label class="item item-input item-select">
+                    <div class="input-label">
+                      Natureza
+                    </div>
+                    <select ng-model="novoTitulo.natureza" required="required">
+                      <option value="undefined">Selecione</option>
+                      <option value="C">Crédito</option>
+                      <option value="D">Débito</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-50">
+                <div class="list">
+                  <label class="item item-input item-stacked-label">
+                    <span class="input-label">Parcelas</span>
+                    <input type="number" min="1" placeholder="Parcelas" ng-model="novoTitulo.nrParcelas" required="required">
+                  </label>
+                </div>
+              </div>
+              <div class="col col-50">
+                <div class="list">
+                  <label class="item item-input item-stacked-label">
+                    <span class="input-label">Valor</span>
+                    <input type="text" placeholder="Valor" ng-model="novoTitulo.valor" required="required" ui-money-mask="2">
+                  </label>
+                </div>
+              </div>
+            </div>
+            <!--<div class="row">
+              <div class="col col-50">
+                <ul class="list">
+                  <li class="item item-toggle">
+                     Lançamento Cheque ou Cartão?
+                     <label class="toggle toggle-assertive">
+                       <input type="checkbox" ng-model="isCheque">
+                       <div class="track">
+                         <div class="handle"></div>
+                       </div>
+                     </label>
+                  </li>
+                </ul>
+              </div>
+            </div>-->
+            <div ng-if="novoTitulo.tipo.id === 1 || novoTitulo.tipo.id === 2">
+              <div class="row">
+                <div class="col col-100">
+                  <div class="list">
+                    <label class="item item-input item-select">
+                      <div class="input-label">
+                        Banco
+                      </div>
+                      <select ng-options="b.banco for b in listaBancos" ng-model="novoTitulo.banco" required="required" ng-change="getAgencias()">
+
+                      </select>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col col-100">
+                  <div class="list">
+                    <label class="item item-input item-select">
+                      <div class="input-label">
+                        Agência
+                      </div>
+                      <select ng-disabled="novoTitulo.banco === undefined" ng-options="a.agencia for a in listaAgencias" ng-model="novoTitulo.banco.agencia" required="required" ng-change="getContas()">
+
+                      </select>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col col-100">
+                  <div class="list">
+                    <label class="item item-input item-select">
+                      <div class="input-label">
+                        Conta
+                      </div>
+                      <select ng-disabled="novoTitulo.banco.agencia === undefined" ng-options="c.conta + ' ' + c.clientes[0].nome for c in listaContas" ng-model="novoTitulo.banco.agencia.conta" required="required">
+
+                      </select>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="padding">
+                <button class="button button-full button-balanced ink" type="submit" ng-disabled="forms.frmTitulo.$invalid">GERAR</button>
+            </div>
+          </form>
         </div>
     </ion-content>
-    <div class="bar bar-footer">
+    <!--<div class="bar bar-footer">
       <div class="title">
 
       </div>
@@ -20,5 +154,5 @@
           <i class="icon ion-plus-round light"></i>
         </button>
       </div>
-    </div>
+    </div>-->
 </ion-view>

@@ -14,10 +14,7 @@
         <p>Data Título: {{titulo.dtTitulo | date: 'dd/MM/yyyy'}}</p>
         <p>Tipo: {{titulo.tipo.tipo}} {{titulo.banco.banco}}</p>
         <h2>{{titulo.valor | currency}}</h2>
-        <p>
-          <a href="#" class="subdued">1 Like</a>
-          <a href="#" class="subdued">5 Comments</a>
-        </p>
+        <p>Contas:</p>
       </div>
 
       <div class="item tabs tabs-secondary tabs-icon-left">
@@ -25,7 +22,7 @@
           <i class="icon ion-trash-a"></i>
           Excluir
         </a>
-        <a class="tab-item" href="#">
+        <a class="tab-item" ng-click="baixarTitulo()">
           <i class="icon ion-checkmark-circled"></i>
           Baixar
         </a>
