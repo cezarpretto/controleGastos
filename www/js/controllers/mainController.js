@@ -55,6 +55,29 @@ angular.module('starter')
     }
   };
 
+  $scope.refreshContas = function(){
+    limit = 10;
+    offset = 0;
+    if(usuarioLogado != null){
+      //msg.loading('show');
+      $scope.listaContas = [];
+      tituloService.getContasDoMes(usuarioLogado.id, limit, offset).success(function(retorno){
+        //msg.loading('hide');
+        angular.forEach(retorno, function(item){
+          item.idUsuario = dateDiff(item.dtVencimento) -1;
+        });
+        $scope.listaContas = [];
+        $scope.listaContas = retorno;
+        $scope.$broadcast('scroll.refreshComplete');
+      }).error(function(err){
+        $scope.$broadcast('scroll.refreshComplete');;
+        console.error(err);
+        msg.alert(err);
+      });
+      //console.log($scope.listaContas);
+    }
+  };
+
   $scope.criarTitulo = function(){
     $ionicHistory.nextViewOptions({
       disableBack: true

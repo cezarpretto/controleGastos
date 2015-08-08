@@ -4,6 +4,7 @@ angular.module('starter')
   auth.isLoggedIn();
   var usuarioLogado = auth.usuarioLogado;
   $scope.novoTitulo = new titulo.titulo();
+  console.log($scope.novoTitulo);
   $scope.listaTitulosInserir = [];
   $scope.isCheque = false;
   $scope.listaBancos = [];
@@ -52,7 +53,7 @@ angular.module('starter')
 
   $scope.getContas = function(){
     msg.loading('show');
-    bancoService.getContas($scope.novoTitulo.banco.agencia.id, 1000, 0).success(function(retorno){
+    bancoService.getContas($scope.novoTitulo.banco.agencias.id, 1000, 0).success(function(retorno){
       msg.loading('hide');
       console.log(retorno);
       $scope.listaContas = retorno;
@@ -66,7 +67,9 @@ angular.module('starter')
     $scope.listaTitulosInserir = [];
     var totalDividido = $scope.novoTitulo.valor / $scope.novoTitulo.nrParcelas;
     var dtVencimento = moment($scope.novoTitulo.dtVencimento);
+    var totalParcelas = 0;
     for (var i = 0; i < $scope.novoTitulo.nrParcelas; i++) {
+      totalParcelas++;
       //console.log(dtVencimento.add(i, 'months').format('YYYY-MM-DD'));
       var tt = new titulo.titulo();
       if(i > 0){
@@ -86,6 +89,15 @@ angular.module('starter')
         tt.numero = $scope.novoTitulo.numero;
       }
       $scope.listaTitulosInserir.unshift(tt);
+    }
+
+    if(totalParcelas > 1){
+      $scope.listaTitulosInserir.reverse();
+      var i = 0;
+      angular.forEach($scope.listaTitulosInserir, function(item){
+        i++;
+        item.obs = item.obs + ' ' + i + '/' + totalParcelas;
+      });
     }
 
     if($scope.novoTitulo.nrParcelas > 1){

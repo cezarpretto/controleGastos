@@ -117,7 +117,7 @@
                       <div class="input-label">
                         Agência
                       </div>
-                      <select ng-disabled="novoTitulo.banco === undefined" ng-options="a.agencia for a in listaAgencias" ng-model="novoTitulo.banco.agencia" required="required" ng-change="getContas()">
+                      <select ng-disabled="novoTitulo.banco === undefined" ng-options="a.agencia for a in listaAgencias" ng-model="novoTitulo.banco.agencias" required="required" ng-change="getContas()">
 
                       </select>
                     </label>
@@ -131,7 +131,7 @@
                       <div class="input-label">
                         Conta
                       </div>
-                      <select ng-disabled="novoTitulo.banco.agencia === undefined" ng-options="c.conta + ' ' + c.clientes[0].nome for c in listaContas" ng-model="novoTitulo.banco.agencia.conta" required="required">
+                      <select ng-disabled="novoTitulo.banco.agencias === undefined" ng-options="c.conta + ' ' + c.clientes[0].nome for c in listaContas" ng-model="novoTitulo.banco.agencias.contas" required="required">
 
                       </select>
                     </label>

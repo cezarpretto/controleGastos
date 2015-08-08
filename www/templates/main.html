@@ -1,10 +1,14 @@
 <ion-view view-title="Controle de Gastos Beta">
   <ion-content>
+    <ion-refresher
+      pulling-text="Puxe para atualizar..."
+      on-refresh="refreshContas()">
+    </ion-refresher>
     <!--<h1>Controle de Gastos Beta</h1>-->
     <div class="list">
-      <a ng-click="selecionaTitulo(c)" class="item item-avatar item-icon-right" ng-repeat="c in listaContas">
-        <img src="img/d.png" ng-if="c.natureza === 'D'">
-        <img src="img/c.png" ng-if="c.natureza === 'C'">
+      <a ng-click="selecionaTitulo(c)" class="item item-icon-right" ng-repeat="c in listaContas">
+        <img width="20" src="img/d.png" ng-if="c.natureza === 'D'">
+        <img width="20" src="img/c.png" ng-if="c.natureza === 'C'">
         <h3>{{c.obs}}</h3>
         <h5>Vencimento: {{c.dtVencimento | date: 'dd/MM/yyyy'}}</h5>
         <h5>Valor: {{c.valor | currency}}</h5>
@@ -15,6 +19,7 @@
         <span class="badge badge-balanced" ng-if="c.idUsuario <= 0">
           *
         </span>-->
+        <hr>
       </a>
     </div>
     <ion-infinite-scroll
