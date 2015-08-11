@@ -87,6 +87,7 @@ angular.module('starter')
 
   $scope.selecionaTitulo = function(titulo){
     auth.selecionaTitulo(titulo);
+    console.log(titulo);
     $state.go('app.titulo');
   };
 }]);

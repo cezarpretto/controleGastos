@@ -1,6 +1,6 @@
 angular.module('starter')
 
-.controller('TitulosController', ['$scope', 'AuthService', 'TituloModel', '$ionicModal', 'BancoService', 'MsgService', '$ionicPopup', 'TituloService', function($scope, auth, titulo, $ionicModal, bancoService, msg, $ionicPopup, tituloService){
+.controller('TitulosController', ['$scope', 'AuthService', 'TituloModel', '$ionicModal', 'BancoService', 'MsgService', '$ionicPopup', 'TituloService', '$ionicHistory', '$state', function($scope, auth, titulo, $ionicModal, bancoService, msg, $ionicPopup, tituloService, $ionicHistory, $state){
   auth.isLoggedIn();
   var usuarioLogado = auth.usuarioLogado;
   $scope.novoTitulo = new titulo.titulo();
@@ -131,6 +131,10 @@ angular.module('starter')
       $scope.closeModalNovoTitulo();
       $scope.listaTitulosInserir = [];
       $scope.novoTitulo = new titulo.titulo();
+      $ionicHistory.nextViewOptions({
+        disableBack: true
+      });
+      $state.go('app.titulos');
     }).error(function(err){
       msg.loading('hide');
       console.error(err.message);
